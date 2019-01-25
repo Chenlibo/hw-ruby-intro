@@ -13,7 +13,7 @@ end
 def sum_to_n? arr, n
   uniq_pairs = arr.combination(2).to_a.uniq # all unique pairs
   boolean_array = uniq_pairs.collect { |pair| pair.sum == n }
-  boolean_array.any? true
+  boolean_array.any?
 end
 
 # Part 2
@@ -23,11 +23,19 @@ def hello(name)
 end
 
 def starts_with_consonant? s
-  s.match? /^[[[:alpha:]]&&[^AEIOUaeiou]]/
+  if s =~ /^[[[:alpha:]]&&[^AEIOUaeiou]]/
+    return true
+  else
+    return false
+  end
 end
 
 def binary_multiple_of_4? s
-  s.match? /^0+$|^[01]*100$/
+  if s =~ /^0+$|^[01]*100$/
+    return true
+  else
+    return false
+  end
 end
 
 # Part 3

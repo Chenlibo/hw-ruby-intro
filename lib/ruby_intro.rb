@@ -11,31 +11,64 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  uniq_pairs = arr.combination(2).to_a.uniq
-  uniq_pairs.each do |pair|
-    if pair.sum == n
-      return true
-    end
-  end
-  return false
+  uniq_pairs = arr.combination(2).to_a.uniq # all unique pairs
+  are_summed_to_n = uniq_pairs.collect {|pair| pair.sum==n}
+  are_summed_to_n.any? true
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  s.match? /^[[[:alpha:]]&&[^AEIOUaeiou]]/
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  s.match? /^0+$|^[01]*100$/
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize(isbn, price)
+    if isbn.empty?
+      raise ArgumentError.new("Empty ISBN string")
+    else
+      @isbn = isbn
+    end
+    if price <= 0
+      raise ArgumentError.new("invalid price")
+    else
+      @price = price
+    end
+  end
+
+  def isbn
+    @isbn
+  end
+  def isbn=(new_isbn)
+    if new_isbn.empty?
+      raise ArgumentError.new("Empty ISBN string")
+    else
+      @isbn = new_isbn
+    end
+  end
+
+  def price
+    @price
+  end
+  def price=(new_price)
+    if new_price <= 0
+      raise ArgumentError.new("Invalid price")
+    else
+      @price = new_price
+    end
+  end
+
+  def price_as_string
+    "$%.2f" % @price
+  end
 end

@@ -3,15 +3,21 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  arr.sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  arr.max(2).sum
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  uniq_pairs = arr.combination(2).to_a.uniq
+  uniq_pairs.each do |pair|
+    if pair.sum == n
+      return true
+    end
+  end
+  return false
 end
 
 # Part 2

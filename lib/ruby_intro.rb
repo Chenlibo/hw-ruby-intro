@@ -12,8 +12,8 @@ end
 
 def sum_to_n? arr, n
   uniq_pairs = arr.combination(2).to_a.uniq # all unique pairs
-  are_summed_to_n = uniq_pairs.collect {|pair| pair.sum==n}
-  are_summed_to_n.any? true
+  boolean_array = uniq_pairs.collect { |pair| pair.sum == n }
+  boolean_array.any? true
 end
 
 # Part 2

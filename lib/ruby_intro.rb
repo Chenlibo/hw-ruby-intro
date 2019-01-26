@@ -11,9 +11,11 @@ def max_2_sum arr
 end
 
 def sum_to_n? arr, n
-  uniq_pairs = arr.combination(2).to_a.uniq # all unique pairs
-  boolean_array = uniq_pairs.collect { |pair| pair.sum == n }
-  boolean_array.any?
+  arr.combination(2) 
+    .to_a
+    .uniq # all unique pairs constructed from array ARR
+    .reject { |pair| pair.sum != n } # reject paris that are not summed to n
+    .count > 0 # return true if exists such pair, false otherwise
 end
 
 # Part 2
@@ -21,21 +23,13 @@ end
 def hello(name)
   "Hello, " + name
 end
-
+# autograder doesn't recognize match?, so I have to use math
 def starts_with_consonant? s
-  if s =~ /^[[[:alpha:]]&&[^AEIOUaeiou]]/
-    return true
-  else
-    return false
-  end
+  s.upcase.match(/^[[[:alpha:]]&&[^AEIOU]]/) != nil
 end
 
 def binary_multiple_of_4? s
-  if s =~ /^0+$|^[01]*100$/
-    return true
-  else
-    return false
-  end
+  s.match(/^0+$|^[01]*100$/) != nil
 end
 
 # Part 3
